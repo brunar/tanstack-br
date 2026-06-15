@@ -1,7 +1,8 @@
 import { createFileRoute, notFound, useRouter } from '@tanstack/react-router'
 import SkillCard from '#/components/SkillCard'
+import { getPokemonFn } from '#/server/pokemon'
 
-const POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon'
+//const POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon'
 
 export const Route = createFileRoute('/')({
 	component: Home,
@@ -11,8 +12,10 @@ export const Route = createFileRoute('/')({
 	pendingMs: 300,
 	loader: async () => {
 		//console.log('Loading data for the home route...')
-		const response = await fetch(POKE_API_URL)
-		const data = await response.json()
+		//const response = await fetch(POKE_API_URL)
+		//const data = await response.json()
+
+		const data = await getPokemonFn()
 
 		//throw new Error('API is down') // Simulate an error for testing
 
